@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class LoginScreenViewController: UIViewController {
+class LoginScreenViewController: UIViewController, UITextFieldDelegate {
     
     private var validate: Validate!
     private var warning: Warning!
@@ -36,11 +36,29 @@ class LoginScreenViewController: UIViewController {
                 self?.performSegue(withIdentifier: Segue.jokes, sender: nil)
             }
         }
+        
+//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+//        view.addGestureRecognizer(tap)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         cleaner.clearFields(emailTextField, passwordTextField, progressViewPassword)
+    }
+    
+//    @objc func dismissKeyboard() {
+//        view.endEditing(true)
+//    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            textField.resignFirstResponder()
+            passwordTextField.becomeFirstResponder()
+        } else if textField == passwordTextField {
+            view.endEditing(true)
+        }
+        return true
     }
     
     @IBAction private func emailTextFieldTap(_ sender: UITextField) {
@@ -99,7 +117,7 @@ class LoginScreenViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        
+
         self.view.endEditing(true)
     }
 }

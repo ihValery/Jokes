@@ -51,9 +51,10 @@
                                                     <constraint firstAttribute="height" constant="40" id="KMj-XB-Qf2"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="email"/>
                                                 <connections>
                                                     <action selector="emailTextFieldTap:" destination="BYZ-38-t0r" eventType="editingChanged" id="mtc-Uc-9U3"/>
+                                                    <outlet property="delegate" destination="BYZ-38-t0r" id="NnP-HF-yj1"/>
                                                 </connections>
                                             </textField>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fT1-KZ-ixv" userLabel="password">
@@ -65,9 +66,10 @@
                                                             <constraint firstAttribute="height" constant="40" id="Dno-ft-G94"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
                                                         <connections>
                                                             <action selector="passwordTextFieldTap:" destination="BYZ-38-t0r" eventType="editingChanged" id="oaU-Kt-cgy"/>
+                                                            <outlet property="delegate" destination="BYZ-38-t0r" id="wfT-IT-ZRE"/>
                                                         </connections>
                                                     </textField>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oad-Ac-7gt">
