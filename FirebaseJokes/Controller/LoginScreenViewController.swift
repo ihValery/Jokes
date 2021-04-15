@@ -29,10 +29,14 @@ class LoginScreenViewController: UIViewController {
         //Если у нас еще есть действующий user, то сделаем переход
         Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
             if user != nil {
-                self?.performSegue(withIdentifier: "goJokes", sender: nil)
+                self?.performSegue(withIdentifier: Segue.jokes, sender: nil)
             }
         }
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        clearFields()
     }
     
     @IBAction private func emailTextFieldTap(_ sender: UITextField) {
@@ -63,8 +67,7 @@ class LoginScreenViewController: UIViewController {
             }
             
             if user != nil {
-                self?.performSegue(withIdentifier: "goJokes", sender: nil)
-                self?.clearFields()
+                self?.performSegue(withIdentifier: Segue.jokes, sender: nil)
                 return
             }
             
