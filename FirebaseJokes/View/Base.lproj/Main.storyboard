@@ -121,6 +121,9 @@
                                                         <integer key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="singUpTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w3Z-ep-vDr"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -144,7 +147,7 @@
                         <outlet property="passwordTextField" destination="0hk-6M-B3h" id="GCy-ct-ZBH"/>
                         <outlet property="progressViewPassword" destination="oad-Ac-7gt" id="x2m-9K-P2P"/>
                         <outlet property="warningLabel" destination="PJ7-NQ-aBs" id="WM7-Xs-9Gl"/>
-                        <segue destination="Xqv-R5-EDS" kind="presentation" identifier="toJokes" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="CrF-ZV-MgN"/>
+                        <segue destination="Xqv-R5-EDS" kind="presentation" identifier="goJokes" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="CrF-ZV-MgN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
