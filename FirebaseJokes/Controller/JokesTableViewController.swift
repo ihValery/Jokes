@@ -29,6 +29,8 @@ class JokesTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+//        ref.observ
+        
         ref.observe(.value) { [weak self] snapshot in
             var _jokes: [Jokes] = []
             for item in snapshot.children {

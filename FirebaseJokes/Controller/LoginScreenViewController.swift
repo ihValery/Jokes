@@ -12,6 +12,7 @@ class LoginScreenViewController: UIViewController {
     
     private var validate: Validate!
     private var warning: Warning!
+    private var cleaner: Cleaner!
     private var ref: DatabaseReference!
     
     @IBOutlet private weak var warningLabel: UILabel!
@@ -25,6 +26,7 @@ class LoginScreenViewController: UIViewController {
         
         validate = Validate()
         warning = Warning()
+        cleaner = Cleaner()
         
         ref = Database.database().reference(withPath: "users")
         
@@ -38,7 +40,7 @@ class LoginScreenViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        clearFields()
+        cleaner.clearFields(emailTextField, passwordTextField, progressViewPassword)
     }
     
     @IBAction private func emailTextFieldTap(_ sender: UITextField) {
@@ -99,11 +101,5 @@ class LoginScreenViewController: UIViewController {
         super.touchesBegan(touches, with: event)
         
         self.view.endEditing(true)
-    }
-    
-    private func clearFields() {
-        emailTextField.text = ""
-        passwordTextField.text = ""
-        progressViewPassword.progress = 0
     }
 }

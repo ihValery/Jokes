@@ -17,7 +17,7 @@ class Warning {
         //animayion - логика анимации и завершающий completion
         UIView.animate(withDuration: 3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseInOut) {
             warningLabel.alpha = 1
-        } completion: { complete in
+        } completion: { _ in
             warningLabel.alpha = 0
         }
     }
