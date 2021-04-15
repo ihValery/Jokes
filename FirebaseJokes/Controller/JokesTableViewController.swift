@@ -6,15 +6,18 @@
 //
 
 import UIKit
+import Firebase
 
 class JokesTableViewController: UITableViewController {
+    
+    private var user: User!
+    private var ref: Firebase.DatabaseReference!
+    private var tasks: [Jokes] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationController?.navigationBar.barTintColor = UIColor(red: 4.0/255.0, green: 155.0/255.0, blue: 229.0/255.0, alpha: 1.0)
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        self.navigationItem.title = "Jokes"
+        designNavigationBar()
     }
 
     deinit {
@@ -73,6 +76,14 @@ class JokesTableViewController: UITableViewController {
 
     // MARK: - Navigation
 
+    private func designNavigationBar() {
+        
+        navigationController?.navigationBar.barTintColor = UIColor(red: 4.0/255.0, green: 155.0/255.0, blue: 229.0/255.0, alpha: 1.0)
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        self.navigationItem.title = "Jokes"
+    }
+    
+    
     @IBAction func singOutTap(_ sender: UIBarButtonItem) {
         
         dismiss(animated: true, completion: nil)
