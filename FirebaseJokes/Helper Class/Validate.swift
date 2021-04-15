@@ -7,20 +7,7 @@
 
 import UIKit
 
-class HelperСlass {
-    
-    func displayWarningLabel(warningLabel: UILabel, withText text: String) {
-        warningLabel.text = text
-        
-        //withDuration - продолжительность, delay - задерка, usingSpringWithDamping - интенсивность 0-1
-        //options - массив опций - одну опцию можно без скобок
-        //animayion - логика анимации и завершающий completion
-        UIView.animate(withDuration: 3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseInOut) { 
-            warningLabel.alpha = 1
-        } completion: { complete in
-            warningLabel.alpha = 0
-        }
-    }
+class Validate {
     
     func isValidEmail(_ email: String) -> Bool {
         

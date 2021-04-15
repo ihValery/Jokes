@@ -23,7 +23,7 @@ class JokesTableViewController: UITableViewController {
         guard let currentUser = Auth.auth().currentUser else { return }
         //Достаем его во "внешний мир" )))
         user = User(user: currentUser)
-        ref = Database.database().reference(withPath: "user").child(String(user.uid)).child("tasks")
+        ref = Database.database().reference(withPath: "user").child(String(user.uid)).child("jokes")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,8 +32,8 @@ class JokesTableViewController: UITableViewController {
         ref.observe(.value) { [weak self] snapshot in
             var _jokes: [Jokes] = []
             for item in snapshot.children {
-                let task = Jokes(snapshot: item as! Firebase.DataSnapshot)
-                _jokes.append(task)
+                let joke = Jokes(snapshot: item as! Firebase.DataSnapshot)
+                _jokes.append(joke)
             }
             self?.jokes = _jokes
             self?.tableView.reloadData()
@@ -45,11 +45,7 @@ class JokesTableViewController: UITableViewController {
         
         ref.removeAllObservers()
     }
-    
-    deinit {
-        
-        print("JokesTableViewController выгружен из памяти")
-    }
+
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,8 +59,8 @@ class JokesTableViewController: UITableViewController {
         cell.backgroundColor = .clear
         cell.textLabel?.textColor = .black
         let joke = jokes[indexPath.row]
-        let taskTitle = joke.title
-        cell.textLabel?.text = taskTitle
+        let jokeTitle = joke.title
+        cell.textLabel?.text = jokeTitle
         toggleCompletion(cell, isCompleted: joke.liked)
 
         return cell
@@ -127,9 +123,9 @@ class JokesTableViewController: UITableViewController {
             guard let textField = alert.textFields?.first?.text, textField != "" else { return }
             
             let jokes = Jokes(title: textField, userId: (self?.user.uid)!)
-            //task.title.lowercased() - используется в качестве папки
-            let taskRef = self?.ref.child(jokes.title.lowercased())
-            taskRef?.setValue(jokes.convertToDictionary())
+            //joke.title.lowercased() - используется в качестве папки
+            let jokeRef = self?.ref.child(jokes.title.lowercased())
+            jokeRef?.setValue(jokes.convertToDictionary())
             
         }
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)

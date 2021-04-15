@@ -10,7 +10,8 @@ import Firebase
 
 class LoginScreenViewController: UIViewController {
     
-    private var helper: HelperСlass!
+    private var validate: Validate!
+    private var warning: Warning!
     private var ref: DatabaseReference!
     
     @IBOutlet private weak var warningLabel: UILabel!
@@ -22,7 +23,8 @@ class LoginScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        helper = HelperСlass()
+        validate = Validate()
+        warning = Warning()
         
         ref = Database.database().reference(withPath: "users")
         
@@ -42,27 +44,27 @@ class LoginScreenViewController: UIViewController {
     @IBAction private func emailTextFieldTap(_ sender: UITextField) {
         
         guard let email = emailTextField.text, email != "" else { return }
-        if helper.isValidEmail(email) {
-            helper.displayWarningLabel(warningLabel: warningLabel, withText: "Your email is correct")
+        if validate.isValidEmail(email) {
+            warning.displayWarningLabel(warningLabel: warningLabel, withText: "Your email is correct")
         }
     }
     
     @IBAction private func passwordTextFieldTap(_ sender: UITextField) {
         
-        helper.isValidPassword(sender, progressView: progressViewPassword)
+        validate.isValidPassword(sender, progressView: progressViewPassword)
     }
     
     @IBAction private func singInTap() {
         guard let email = emailTextField.text, email != "",
               let password = passwordTextField.text, password != "" else {
-            helper.displayWarningLabel(warningLabel: warningLabel, withText: "Info is not correct")
+            warning.displayWarningLabel(warningLabel: warningLabel, withText: "Info is not correct")
             return
         }
         
         //Логинит пользователя если он существует
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] (user, error) in
             if error != nil {
-                self?.helper.displayWarningLabel(warningLabel: self!.warningLabel, withText: "Error occured")
+                self?.warning.displayWarningLabel(warningLabel: self!.warningLabel, withText: "Error occured")
                 return
             }
             
@@ -71,20 +73,20 @@ class LoginScreenViewController: UIViewController {
                 return
             }
             
-            self?.helper.displayWarningLabel(warningLabel: self!.warningLabel, withText: "No such user")
+            self?.warning.displayWarningLabel(warningLabel: self!.warningLabel, withText: "No such user")
         }
     }
     
     @IBAction private func singUpTap(_ sender: UIButton) {
         guard let email = emailTextField.text, email != "",
               let password = passwordTextField.text, password != "" else {
-            helper.displayWarningLabel(warningLabel: warningLabel, withText: "Info is not correct")
+            warning.displayWarningLabel(warningLabel: warningLabel, withText: "Info is not correct")
             return
         }
         
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] (user, error) in
             guard error == nil, user != nil else {
-                print(error!.localizedDescription)
+                self?.warning.displayWarningLabel(warningLabel: self!.warningLabel, withText: error!.localizedDescription)
                 return
             }
             guard let user = user else { return }
