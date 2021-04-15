@@ -52,6 +52,9 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                <connections>
+                                                    <action selector="emailTextFieldTap:" destination="BYZ-38-t0r" eventType="editingChanged" id="mtc-Uc-9U3"/>
+                                                </connections>
                                             </textField>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fT1-KZ-ixv" userLabel="password">
                                                 <rect key="frame" x="0.0" y="71.000000000000028" width="340" height="40"/>
@@ -63,6 +66,9 @@
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                                        <connections>
+                                                            <action selector="passwordTextFieldTap:" destination="BYZ-38-t0r" eventType="editingChanged" id="oaU-Kt-cgy"/>
+                                                        </connections>
                                                     </textField>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oad-Ac-7gt">
                                                         <rect key="frame" x="3" y="36" width="334" height="4"/>
@@ -134,6 +140,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="CnO-Bd-AG9"/>
                     <connections>
+                        <outlet property="emailTextField" destination="kam-G3-Xh4" id="5SG-9z-saV"/>
+                        <outlet property="passwordTextField" destination="0hk-6M-B3h" id="GCy-ct-ZBH"/>
+                        <outlet property="progressViewPassword" destination="oad-Ac-7gt" id="x2m-9K-P2P"/>
+                        <outlet property="warningLabel" destination="PJ7-NQ-aBs" id="WM7-Xs-9Gl"/>
                         <segue destination="Xqv-R5-EDS" kind="presentation" identifier="toJokes" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="CrF-ZV-MgN"/>
                     </connections>
                 </viewController>
@@ -141,7 +151,7 @@
             </objects>
             <point key="canvasLocation" x="771" y="-9"/>
         </scene>
-        <!--Jokes-->
+        <!--Jokes Table View Controller-->
         <scene sceneID="UBC-IO-6Ng">
             <objects>
                 <tableViewController storyboardIdentifier="JokesStoryboard" id="TUB-Zd-T3c" customClass="JokesTableViewController" customModule="FirebaseJokes" customModuleProvider="target" sceneMemberID="viewController">
@@ -164,12 +174,18 @@
                             <outlet property="delegate" destination="TUB-Zd-T3c" id="A1f-uW-tgz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Jokes" id="gWC-oU-fuv">
+                    <navigationItem key="navigationItem" id="gWC-oU-fuv">
                         <barButtonItem key="leftBarButtonItem" title="Sing Out" id="PpQ-CH-h8K">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="singOutTap:" destination="TUB-Zd-T3c" id="CDT-25-qg8"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="8nJ-96-k8W">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="addJokesTap:" destination="TUB-Zd-T3c" id="DBa-xl-Z2m"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
@@ -177,10 +193,10 @@
             </objects>
             <point key="canvasLocation" x="2262" y="-9"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Jokes-->
         <scene sceneID="q6J-dW-1h7">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Xqv-R5-EDS" sceneMemberID="viewController">
+                <navigationController title="Jokes" automaticallyAdjustsScrollViewInsets="NO" id="Xqv-R5-EDS" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="iG6-k5-iVG"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gC7-8g-TQr">

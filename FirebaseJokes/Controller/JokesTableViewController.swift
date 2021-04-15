@@ -11,16 +11,15 @@ class JokesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//
-//        navigationController?.setNavigationBarHidden(false, animated: false)
-//        navigationController?.navigationBar.barTintColor = UIColor(red: 4.0/255.0, green: 155.0/255.0, blue: 229.0/255.0, alpha: 1.0)
-//        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white,
-//                                                                   NSAttributedString.Key.font: UIFont.systemFont(ofSize: 30)]
-//        self.navigationItem.title = "Jokes"
+
+        navigationController?.navigationBar.barTintColor = UIColor(red: 4.0/255.0, green: 155.0/255.0, blue: 229.0/255.0, alpha: 1.0)
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        self.navigationItem.title = "Jokes"
     }
 
     deinit {
-        print("JokesTableViewController выгружен")
+        
+        print("JokesTableViewController выгружен из памяти")
     }
     // MARK: - Table view data source
 
@@ -72,14 +71,18 @@ class JokesTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func singOutTap(_ sender: UIBarButtonItem) {
+        
+        dismiss(animated: true, completion: nil)
     }
-    */
+    
+    @IBAction func addJokesTap(_ sender: UIBarButtonItem) {
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    }
 
 }
