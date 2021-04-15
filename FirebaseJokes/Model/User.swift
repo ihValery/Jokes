@@ -15,6 +15,6 @@ struct User {
     
     init(user: Firebase.User) {
         self.uid = user.uid
-        self.email = user.email ?? "not email"
+        self.email = user.email ?? "none@example.org"
     }
 }
