@@ -96,15 +96,14 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate {
             return
         }
 
-        Auth.auth().createUser(withEmail: email, password: password) { [weak self] (user, error) in
+        Auth.auth().createUser(withEmail: email, password: password, completion: { [weak self] (user, error) in
             guard error == nil, user != nil else {
                 self?.warning.displayWarningLabel(warningLabel: self!.warningLabel, withText: error!.localizedDescription)
                 return
             }
-            guard let user = user else { return }
-            let userRef = self?.ref.child(user.user.uid)
-            userRef?.setValue(["email" : user.user.email])
-        }
+            let userRef = self?.ref.child((user?.user.uid)!)
+            userRef?.setValue(["email": user?.user.email])
+        })
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
