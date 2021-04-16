@@ -84,7 +84,8 @@ class SingUpViewController: UIViewController, UITextFieldDelegate {
               let passwordOne = pasOneTextField.text, passwordOne != "",
               let passwordTwo = pasTwoTextField.text, passwordTwo != "" else {
             
-            let alert = UIAlertController(title: "А ты хитер )))", message: "Знаешь как решить данную проблему? Напиши ihValery@email.com", preferredStyle: .alert)
+            let message = "Знаешь как решить данную проблему? Напиши ihValery@email.com"
+            let alert = UIAlertController(title: "А ты хитер )))", message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true)
             return
@@ -97,14 +98,17 @@ class SingUpViewController: UIViewController, UITextFieldDelegate {
                 self?.present(alert, animated: true)
                 return
             }
+            
             guard let user = user else { return }
             let userRef = self?.ref.child(user.user.uid)
             
-//            if let name = self?.nameTextField.text, name != "" {
-//                userRef?.setValue(["email" : user.user.email, ["name"] : user.user.displayName])
-//            } else {
+            //TODO: - Доделать name
+            
+            if let name = self?.nameTextField.text, name != "" {
+                userRef?.setValue(["email" : user.user.email, "name" : user.user.displayName])
+            } else {
                 userRef?.setValue(["email" : user.user.email])
-//            }
+            }
             self?.performSegue(withIdentifier: Segue.upJokes, sender: nil)
         }
     }
