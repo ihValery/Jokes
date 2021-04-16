@@ -24,4 +24,9 @@ class Cleaner {
         passwordTwo.text = nil
         progressView.progress = 0
     }
+    
+    ///Clean up progressView.
+    func clearFields(_ progressView: UIProgressView) {
+        progressView.progress = 0
+    }
 }

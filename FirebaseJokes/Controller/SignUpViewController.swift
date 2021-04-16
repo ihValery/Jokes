@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class SingUpViewController: UIViewController, UITextFieldDelegate {
+class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     private var validate: Validate!
     private var warning: Warning!
@@ -36,9 +36,17 @@ class SingUpViewController: UIViewController, UITextFieldDelegate {
         ref = Database.database().reference(withPath: "users")
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        alertStart()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         cleaner.clearFields(nameTextField, emailTextField, pasOneTextField, pasTwoTextField, pasOneProgressView)
+        cleaner.clearFields(pasTwoProgressView)
+        signUpButton.isEnabled = true
+        signUpButton.alpha = 0.75
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -111,6 +119,16 @@ class SingUpViewController: UIViewController, UITextFieldDelegate {
             }
             self?.performSegue(withIdentifier: Segue.upJokes, sender: nil)
         }
+    }
+    
+    private func alertStart() {
+        
+        let title = "You can specify a non-existent email, thereby preserving your incognito."
+        let message = "The minimum password is 6 characters, but I recommend achieving a green indicator."
+        
+        let alertStart = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertStart.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alertStart, animated: true)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

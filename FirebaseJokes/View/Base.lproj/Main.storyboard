@@ -154,7 +154,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="502" y="361"/>
+            <point key="canvasLocation" x="565" y="-314"/>
         </scene>
         <!--Jokes Table View Controller-->
         <scene sceneID="UBC-IO-6Ng">
@@ -217,10 +217,10 @@
             </objects>
             <point key="canvasLocation" x="1532" y="-9"/>
         </scene>
-        <!--Sing Up View Controller-->
+        <!--Sign Up View Controller-->
         <scene sceneID="c5U-Ve-AGh">
             <objects>
-                <viewController storyboardIdentifier="SingUpSB" id="bpf-xy-QEk" customClass="SingUpViewController" customModule="FirebaseJokes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SingUpSB" id="bpf-xy-QEk" customClass="SignUpViewController" customModule="FirebaseJokes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GXW-ZN-yIo">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -232,10 +232,10 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="Y1R-Ru-3Uc">
-                                <rect key="frame" x="25" y="93.999999999999972" width="340" height="478.33333333333326"/>
+                                <rect key="frame" x="25" y="94.000000000000028" width="340" height="431.66666666666674"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="MHI-hM-Cex" userLabel="logo">
-                                        <rect key="frame" x="0.0" y="0.0" width="340" height="123.33333333333333"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="340" height="76.666666666666671"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4iw-hF-pdx">
                                                 <rect key="frame" x="0.0" y="0.0" width="179.66666666666666" height="60"/>
@@ -243,10 +243,8 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GvP-5r-hvD">
-                                                <rect key="frame" x="0.0" y="61" width="279" height="62.333333333333343"/>
-                                                <string key="text">You can specify a non-existent email, thereby preserving your incognito.
-The minimum password is 6 characters, but I recommend achieving a green indicator.</string>
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="warning" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GvP-5r-hvD">
+                                                <rect key="frame" x="0.0" y="60.999999999999993" width="48" height="15.666666666666664"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -254,7 +252,7 @@ The minimum password is 6 characters, but I recommend achieving a green indicato
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="SkC-wp-w9L" userLabel="textFields">
-                                        <rect key="frame" x="0.0" y="154.33333333333337" width="340" height="253"/>
+                                        <rect key="frame" x="0.0" y="107.66666666666666" width="340" height="252.99999999999997"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name (optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s3d-hZ-8RQ">
                                                 <rect key="frame" x="0.0" y="0.0" width="340" height="40"/>
@@ -269,7 +267,7 @@ The minimum password is 6 characters, but I recommend achieving a green indicato
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="feB-Vd-YzG">
-                                                <rect key="frame" x="0.0" y="70.999999999999972" width="340" height="40"/>
+                                                <rect key="frame" x="0.0" y="71.000000000000028" width="340" height="40"/>
                                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="jn2-NJ-Qd2"/>
@@ -283,7 +281,7 @@ The minimum password is 6 characters, but I recommend achieving a green indicato
                                                 </connections>
                                             </textField>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Dz-Kd-oZ4" userLabel="password">
-                                                <rect key="frame" x="0.0" y="141.99999999999997" width="340" height="40"/>
+                                                <rect key="frame" x="0.0" y="142.00000000000003" width="340" height="40"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sAd-RS-Xvl">
                                                         <rect key="frame" x="0.0" y="0.0" width="340" height="40"/>
@@ -304,16 +302,15 @@ The minimum password is 6 characters, but I recommend achieving a green indicato
                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </progressView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstItem="o0K-7k-LIR" firstAttribute="leading" secondItem="1Dz-Kd-oZ4" secondAttribute="leading" constant="3" id="1Tt-uS-Pkm"/>
+                                                    <constraint firstAttribute="trailing" secondItem="sAd-RS-Xvl" secondAttribute="trailing" id="543-GI-pc7"/>
                                                     <constraint firstAttribute="trailing" secondItem="o0K-7k-LIR" secondAttribute="trailing" constant="3" id="REc-UT-nu4"/>
-                                                    <constraint firstAttribute="trailing" secondItem="sAd-RS-Xvl" secondAttribute="trailing" id="dis-GJ-0ao"/>
-                                                    <constraint firstItem="sAd-RS-Xvl" firstAttribute="leading" secondItem="1Dz-Kd-oZ4" secondAttribute="leading" id="mHE-rS-Ohq"/>
+                                                    <constraint firstItem="sAd-RS-Xvl" firstAttribute="leading" secondItem="1Dz-Kd-oZ4" secondAttribute="leading" id="iSZ-bm-u13"/>
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dFf-1w-EhG" userLabel="password">
-                                                <rect key="frame" x="0.0" y="212.99999999999997" width="340" height="40"/>
+                                                <rect key="frame" x="0.0" y="213.00000000000003" width="340" height="40"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ik4-Lo-q9b">
                                                         <rect key="frame" x="0.0" y="0.0" width="340" height="40"/>
@@ -334,18 +331,17 @@ The minimum password is 6 characters, but I recommend achieving a green indicato
                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </progressView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstItem="ik4-Lo-q9b" firstAttribute="leading" secondItem="dFf-1w-EhG" secondAttribute="leading" id="CGG-aZ-7p7"/>
-                                                    <constraint firstAttribute="trailing" secondItem="ik4-Lo-q9b" secondAttribute="trailing" id="GzI-Cl-f4Y"/>
+                                                    <constraint firstItem="ik4-Lo-q9b" firstAttribute="leading" secondItem="dFf-1w-EhG" secondAttribute="leading" id="eXd-Xk-D8g"/>
                                                     <constraint firstItem="gAn-tL-y8Z" firstAttribute="leading" secondItem="dFf-1w-EhG" secondAttribute="leading" constant="3" id="o5l-O3-IBZ"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ik4-Lo-q9b" secondAttribute="trailing" id="ocl-sX-EvH"/>
                                                     <constraint firstAttribute="trailing" secondItem="gAn-tL-y8Z" secondAttribute="trailing" constant="3" id="sNv-F0-iCU"/>
                                                 </constraints>
                                             </stackView>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="izd-k6-xQd" userLabel="buttons">
-                                        <rect key="frame" x="0.0" y="438.33333333333337" width="340" height="40"/>
+                                        <rect key="frame" x="0.0" y="391.66666666666669" width="340" height="40"/>
                                         <subviews>
                                             <button opaque="NO" alpha="0.75" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z9G-Fb-sBg">
                                                 <rect key="frame" x="0.0" y="0.0" width="340" height="40"/>
@@ -396,11 +392,11 @@ The minimum password is 6 characters, but I recommend achieving a green indicato
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FqT-xl-AI9" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="502" y="-324"/>
+            <point key="canvasLocation" x="565" y="409"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="CrF-ZV-MgN"/>
+        <segue reference="ens-8l-MhK"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="firebaseLogo" width="512" height="512"/>
