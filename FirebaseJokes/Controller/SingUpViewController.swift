@@ -32,6 +32,8 @@ class SingUpViewController: UIViewController, UITextFieldDelegate {
         validate = Validate()
         warning = Warning()
         cleaner = Cleaner()
+        
+        ref = Database.database().reference(withPath: "users")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,26 +71,42 @@ class SingUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func pasTwoTap(_ sender: UITextField) {
-        guard let pasOne = pasOneTextField.text, pasOne != "",
-              let pasTwo = pasTwoTextField.text, pasTwo != "" else { return }
         
-        if pasOne == pasTwo {
+        if validate.equalPasswords(pasOneTextField, pasTwoTextField) {
             pasTwoProgressView.progress = 1
-            pasTwoProgressView.progressTintColor = .green
+            pasTwoProgressView.progressTintColor = .systemGreen
         }
         validate.isEnableSignUp(emailTextField, pasOneTextField, sender, signUp: signUpButton)
     }
     
     @IBAction private func signUpTap(_ sender: Any) {
+        guard let email = emailTextField.text,
+              let passwordOne = pasOneTextField.text, passwordOne != "",
+              let passwordTwo = pasTwoTextField.text, passwordTwo != "" else {
+            
+            let alert = UIAlertController(title: "А ты хитер )))", message: "Знаешь как решить данную проблему? Напиши ihValery@email.com", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            return
+        }
         
-//        guard let email = emailTextField.text, email != "" else { return }
-//        guard let pasOne = pasOneTextField.text, pasOne != "" else { return }
-//        guard let pasTwo = pasTwoTextField.text, pasTwo != "" else { return }
-//
-//        if validate.isValidEmail(email) && ( pasOne == pasTwo ) {
-//
-//        }
-        
+        Auth.auth().createUser(withEmail: email, password: passwordTwo) { [weak self] (user, error) in
+            guard error == nil, user != nil else {
+                let alert = UIAlertController(title: "Warning", message: error?.localizedDescription, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self?.present(alert, animated: true)
+                return
+            }
+            guard let user = user else { return }
+            let userRef = self?.ref.child(user.user.uid)
+            
+//            if let name = self?.nameTextField.text, name != "" {
+//                userRef?.setValue(["email" : user.user.email, ["name"] : user.user.displayName])
+//            } else {
+                userRef?.setValue(["email" : user.user.email])
+//            }
+            self?.performSegue(withIdentifier: Segue.upJokes, sender: nil)
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

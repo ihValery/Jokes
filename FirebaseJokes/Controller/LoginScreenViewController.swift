@@ -33,7 +33,7 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate {
         //Если у нас еще есть действующий user, то сделаем переход
         Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
             if user != nil {
-                self?.performSegue(withIdentifier: Segue.jokes, sender: nil)
+                self?.performSegue(withIdentifier: Segue.inJokes, sender: nil)
             }
         }
     }
@@ -81,7 +81,7 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate {
             }
             
             if user != nil {
-                self?.performSegue(withIdentifier: Segue.jokes, sender: nil)
+                self?.performSegue(withIdentifier: Segue.inJokes, sender: nil)
                 return
             }
             
@@ -95,7 +95,7 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate {
             warning.displayWarningLabel(warningLabel: warningLabel, withText: "Info is not correct")
             return
         }
-        
+
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] (user, error) in
             guard error == nil, user != nil else {
                 self?.warning.displayWarningLabel(warningLabel: self!.warningLabel, withText: error!.localizedDescription)
