@@ -9,6 +9,19 @@ import UIKit
 
 class Validate {
     
+    ///When the email is correct and the passwords match, the registration button becomes active.
+    func isEnableSignUp(_ email: UITextField, _ passwordOne: UITextField, _ passwordTwo: UITextField, signUp: UIButton) {
+        
+        guard let email = email.text,
+              let passwordOne = passwordOne.text, passwordOne != "",
+              let passwordTwo = passwordTwo.text, passwordTwo != "" else { return }
+        
+        signUp.isEnabled = isValidEmail(email) && ( passwordOne == passwordTwo ) ? true : false
+        signUp.alpha = isValidEmail(email) && ( passwordOne == passwordTwo ) ? 1 : 0.75
+
+    }
+    
+    ///Checks a string for email format
     func isValidEmail(_ email: String) -> Bool {
         
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
@@ -16,6 +29,7 @@ class Validate {
         return emailPred.evaluate(with: email)
     }
     
+    ///Checks a string for password format. Four levels of password security.
     func isValidPassword(_ textField: UITextField, progressView: UIProgressView) {
         
         let levelTwoBigChar   = NSPredicate(format: "SELF MATCHES %@ ",

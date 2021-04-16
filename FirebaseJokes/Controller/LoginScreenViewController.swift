@@ -36,20 +36,12 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate {
                 self?.performSegue(withIdentifier: Segue.jokes, sender: nil)
             }
         }
-        
-//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-//        view.addGestureRecognizer(tap)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         cleaner.clearFields(emailTextField, passwordTextField, progressViewPassword)
     }
-    
-//    @objc func dismissKeyboard() {
-//        view.endEditing(true)
-//    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == emailTextField {
@@ -118,6 +110,6 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
 
-        self.view.endEditing(true)
+        view.endEditing(true)
     }
 }
