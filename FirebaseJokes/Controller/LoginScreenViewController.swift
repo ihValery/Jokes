@@ -33,23 +33,15 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate {
         //Если у нас еще есть действующий user, то сделаем переход
         Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
             if user != nil {
-                self?.performSegue(withIdentifier: Segue.jokes, sender: nil)
+                self?.performSegue(withIdentifier: Segue.inJokes, sender: nil)
             }
         }
-        
-//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-//        view.addGestureRecognizer(tap)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         cleaner.clearFields(emailTextField, passwordTextField, progressViewPassword)
     }
-    
-//    @objc func dismissKeyboard() {
-//        view.endEditing(true)
-//    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == emailTextField {
@@ -89,7 +81,7 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate {
             }
             
             if user != nil {
-                self?.performSegue(withIdentifier: Segue.jokes, sender: nil)
+                self?.performSegue(withIdentifier: Segue.inJokes, sender: nil)
                 return
             }
             
@@ -103,7 +95,7 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate {
             warning.displayWarningLabel(warningLabel: warningLabel, withText: "Info is not correct")
             return
         }
-        
+
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] (user, error) in
             guard error == nil, user != nil else {
                 self?.warning.displayWarningLabel(warningLabel: self!.warningLabel, withText: error!.localizedDescription)
@@ -118,6 +110,6 @@ class LoginScreenViewController: UIViewController, UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
 
-        self.view.endEditing(true)
+        view.endEditing(true)
     }
 }

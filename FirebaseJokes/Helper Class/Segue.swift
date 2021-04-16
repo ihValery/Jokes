@@ -9,6 +9,7 @@ import Foundation
 
 struct Segue {
     
-    static let jokes = "goJokes"
+    static let inJokes = "inJokes"
+    static let upJokes = "upJokes"
     static let addJoke = "goAddJoke"
 }
